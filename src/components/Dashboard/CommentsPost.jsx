@@ -15,7 +15,7 @@ const CommentsPost = () => {
                 console.log('user commented post', response);
                 if(response.status==200) {
                     setIsLoading(false);
-
+                    setPosts(response?.data)
                 }
             } catch (err) {
                 Swal.fire({
@@ -35,7 +35,7 @@ const CommentsPost = () => {
     }, []);
 
     return (
-        <div>
+        <div className="container mx-auto p-4">
             {
                 isLoading ? <Loading/> :
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
