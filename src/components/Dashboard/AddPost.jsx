@@ -58,7 +58,7 @@ const AddPost = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate('/my_post');
+                navigate('/home/my_post');
             })
             .catch((error) => {
                 Swal.fire({

@@ -58,7 +58,7 @@ const EditPost = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    navigate(`/post_details/${id}`);
+                    navigate(`/home/post_details/${id}`);
                 }
             })
             .catch(error => {

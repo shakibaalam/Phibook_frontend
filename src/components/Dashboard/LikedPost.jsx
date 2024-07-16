@@ -13,7 +13,8 @@ const LikedPost = () => {
       try {
         const response = await axiosInstance.get("/api/posts/user_post_like/");
         setIsLoading(false);
-        setLikedPosts(response.data);
+        const sortedPosts = response?.data?.sort((a, b) => new Date(b?.created_at) - new Date(a?.created_at));
+        setLikedPosts(sortedPosts);
       } catch (error) {
         console.error("Error fetching liked posts:", error);
         Swal.fire({
@@ -38,8 +39,8 @@ const LikedPost = () => {
           {likedPosts?.length === 0 ? (
             <p>No liked posts found.</p>
           ) : (
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {likedPosts.map((post) => (
+            <div className="grid grid-cols-1 gap-4 ">
+              {likedPosts?.map((post) => (
                 <PostCard key={post?.id} post={post} />
               ))}
             </div>

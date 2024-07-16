@@ -3,3 +3,12 @@
 @tailwind utilities;
 
 
+
+.dark .bg-white {
+    background-color: #1a202c;
+    color: #e2e8f0; 
+}
+.dark .text-gray-600 {
+    color: #e2e8f0;
+}
+  

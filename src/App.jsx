@@ -14,26 +14,29 @@ import MyPost from "./components/Dashboard/MyPost";
 import AddPost from "./components/Dashboard/AddPost";
 import PostDetails from "./components/PostCard/PostDetails";
 import EditPost from "./components/PostCard/EditPost";
+import CreatePost from "./components/PostCard/CreatePost";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/register" element={<Registration />}></Route>
-            <Route path="/liked_post" element={<LikedPost />}></Route>
-            <Route path="/comment_post" element={<CommentsPost />}></Route>
-            <Route path="/post_details/:id" element={<PostDetails />}></Route>
-            <Route path="/edit_post/:id" element={<EditPost />}></Route>
-            <Route path="/my_post" element={<MyPost />}></Route>
-            <Route path="/add_post" element={<AddPost />}></Route>
-            <Route path="/profile" element={<Profile />}></Route>
-          </Route>
+        <Route path="/" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
 
-          <Route path="*" element={<NotFound />}/>
+        <Route path="/home" element={<Layout />}>
+          <Route path="" element={<Home />} />
+          <Route path="liked_post" element={<LikedPost />} />
+          <Route path="comment_post" element={<CommentsPost />} />
+          <Route path="post_details/:id" element={<PostDetails />} />
+          <Route path="edit_post/:id" element={<EditPost />} />
+          <Route path="my_post" element={<MyPost />} />
+          <Route path="add_post" element={<CreatePost />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
 
-        </Routes>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </BrowserRouter>
   );
 }

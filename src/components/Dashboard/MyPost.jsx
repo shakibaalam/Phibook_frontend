@@ -12,7 +12,8 @@ const MyPost = () => {
             .then(response => {
               console.log('all my posts', response);
               setIsLoading(false);
-              setPosts(response?.data); 
+              const sortedPosts = response?.data?.sort((a, b) => new Date(b?.created_at) - new Date(a?.created_at));
+              setPosts(sortedPosts);
             })
             .catch(error => {
                 console.error('Error fetching posts:', error);
@@ -24,7 +25,7 @@ const MyPost = () => {
             <div className="container mx-auto p-4">
                 {
                     posts?.length >0 ?
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <div className="grid grid-cols-1 gap-4">
                     {posts?.map((post,index) => <PostCard key={index} post={post}/>)}
                 </div> :
                 <div className="text-center text-xl font-bold mt-8 mb-4">No posts found.</div>

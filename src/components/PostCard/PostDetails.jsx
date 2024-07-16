@@ -32,6 +32,14 @@ const PostDetails = () => {
         setLiked(userLiked);
       })
       .catch((error) => {
+        setIsLoading(false);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: `${error?.response?.data?.detail}. Please login and try again.`,
+          showConfirmButton: false,
+          timer: 3500,
+        });
         console.error("Error fetching post:", error);
       });
   }, [id, user?.user?.id]);
@@ -41,7 +49,7 @@ const PostDetails = () => {
   const { image, author, content, title, video } = post;
 
   const handleEdit = () => {
-    navigate(`/edit_post/${id}`);
+    navigate(`/home/edit_post/${id}`);
   };
 
   const handleDelete = () => {
@@ -116,10 +124,10 @@ const PostDetails = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-10 leading-6">
-      <div className=" grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="w-full bg-slate-200 p-2">
-          <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-4">
+    <div className="w-full mx-auto px-4 py-10 leading-6">
+      <div className=" grid grid-cols-1 gap-6">
+        <div className="w-full shadow p-2">
+          <div className="grid grid-cols-1 w-full gap-4">
             {video && (
               <video controls className="w-full h-64 rounded-md object-cover">
                 <source src={Url + video} type="video/mp4" />

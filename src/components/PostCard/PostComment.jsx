@@ -122,25 +122,25 @@ const PostComment = ({ postId, userId, comments }) => {
 
   return (
     <div>
-      <div className="bg-slate-200 h-full">
-        <form onSubmit={handleCommentSubmit} className="p-2 flex gap-2">
+      <div className="">
+        <form onSubmit={handleCommentSubmit} className="p-2 flex gap-2 shadow mb-6 ">
           <input
             type="text"
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             placeholder="Add a comment"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-yellow-300 rounded focus:outline-none"
           />
           <button type="submit" className="">
             <MdSend color="blue" className="text-2xl" />
           </button>
         </form>
-        <div>
+        <div className=" shadow py-4">
           {comments?.length > 0 ? (
             comments?.map((comment) => (
               <div
                 key={comment?.id}
-                className="m-2 p-1 border-b-2 border-b-blue-200 bg-slate-300 rounded-sm"
+                className="m-2 p-1 border-b border-b-blue-50  rounded-sm"
               >
                 <p className="font-semibold">
                   {comment?.user?.first_name} {comment?.user?.last_name}
